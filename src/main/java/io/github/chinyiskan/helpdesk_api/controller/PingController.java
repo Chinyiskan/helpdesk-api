@@ -2,16 +2,22 @@ package io.github.chinyiskan.helpdesk_api.controller;
 
 import java.util.Map;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController 
 @RequestMapping("/api")
-
 public class PingController {
 
     @GetMapping("/ping")
     public Map<String, String> ping() {
         return Map.of("status", "ok");
+    }
+
+    @GetMapping("/ping/{name}")
+    public Map<String, String> saludo(@PathVariable String name) {
+        return Map.of("message", "Hola, " + name);
     }
 }
